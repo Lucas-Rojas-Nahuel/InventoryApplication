@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href=" /styles/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-surface text-on-surface font-body min-h-screen flex flex-col">
+    <%- include('./partials/header') %>
+
+    <main class="flex-grow pt-15">
+      <!-- Hero Section -->
+      <section
+        class="relative flex h-dvh items-center overflow-hidden bg-surface-container-low"
+      >
+        <div class="absolute inset-0 z-0 opacity-40">
+          <img
+            class="w-full h-full object-cover grayscale brightness-50"
+            data-alt="Cinematic wide shot of a futuristic minimalist gaming laboratory with glowing indigo lights and sleek black hardware surfaces"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOVTeO_DEsI_KGdT9eLNkd4F97dpFYMjlAhoKwwnwlSYbNDS6bBpx_EQoqa3n8bRPXa9mj_t3_1Zo25k5WBFA-S2kkDd1LM-ucrDcgg2BLdszhLKfNmD6d_jvVI7UdFuJGY9mf0EunahW1zZmUrcmmCBUBfLME_EByGgBe8Ysr1CvpUHXuHzdhYz9U2K5c24qeQZ4y6i6r-GjJBQhzeAajxI4PutZxHCTlMZPF7XWqvAvDMI7iXnCCLtL3u0KR-aZkQA6GLFEs6wMF"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"
+          ></div>
+        </div>
+        <div class="relative px-10 pt-10 max-w-4xl">
+          <h1
+            class="font-headline text-7xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-none mb-6"
+          >
+            <span class="text-primary-container">Sistema</span>
+            <br />de inventario de juegos
+          </h1>
+          <p
+            class="font-body text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed opacity-80"
+          >
+            Administra tu catálogo de videojuegos de forma sencilla. Agrega
+            nuevos títulos, edita su información y elimina registros para
+            mantener tu biblioteca organizada.
+          </p>
+          <div class="flex space-x-4">
+            <a
+              href="/games"
+              class="primary-gradient text-on-primary-fixed font-label font-bold uppercase tracking-widest text-xs px-10 py-4 rounded-sm hover:brightness-110 active:scale-95 transition-all"
+            >
+              Explorar Juegos
+            </a>
+            <a
+              href="/genres"
+              class="bg-surface-container-highest text-on-surface font-label font-bold uppercase tracking-widest text-xs px-10 py-4 rounded-sm border border-outline/20 hover:bg-surface-bright active:scale-95 transition-all"
+            >
+              Explorar Generos
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%-include('./partials/footer')%>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title%></title>
+    <link rel="stylesheet" href="/styles/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <%- include('../partials/header') %>
+    <main class="pt-20 min-h-screen flex flex-col">
+      <!-- Hero Section: Large Cover Image -->
+      <section class="relative h-[414px] w-full overflow-hidden">
+        <img
+          alt=""
+          class="w-full h-full object-scale-down"
+          data-alt="Cinematic high-angle shot of a tactical operative in futuristic gear overlooking a neon-lit dystopian city at night with blue and indigo haze."
+          src="<%= game.image_url  || 'https://static.vecteezy.com/system/resources/previews/005/720/408/non_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg' %>"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-full px-10 pb-12 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        >
+          <div class="max-w-3xl">
+            <h1
+              class="font-headline font-extrabold text-5xl md:text-7xl tracking-tighter text-on-surface uppercase mb-2"
+            >
+              <%=game.name%>
+            </h1>
+          </div>
+          <div class="flex gap-4">
+            <a
+              href="/games/<%= game.id%>/update"
+              class="px-6 py-3 bg-secondary-container text-secondary font-label text-xs uppercase tracking-widest font-bold hover:bg-surface-bright transition-all duration-300 rounded-sm active:scale-95"
+            >
+              Editar Juego
+            </a>
+            <form action="/games/<%= game.id%>/delete" method="POST">
+              <button
+                class="px-6 py-3 bg-tertiary-container text-on-tertiary-container font-label text-xs uppercase tracking-widest font-bold hover:bg-on-tertiary transition-all duration-300 rounded-sm active:scale-95"
+              >
+                Eliminar Juego
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- Details Grid: Asymmetric Layout -->
+      <section
+        class="px-10 py-16 grid grid-cols-1 md:grid-cols-12 gap-12 bg-surface-container-low"
+      >
+        <!-- Left Metadata Column -->
+        <div class="md:col-span-4 space-y-12">
+          <div class="space-y-6">
+            <h3
+              class="font-label text-[10px] uppercase tracking-[0.2em] text-primary"
+            >
+              Especificaciones
+            </h3>
+            <div class="space-y-4">
+              <div
+                class="flex justify-between items-end border-b border-outline-variant/10 pb-2"
+              >
+                <span
+                  class="font-label text-[10px] uppercase text-on-surface-variant"
+                  >Plataforma</span
+                >
+                <span class="font-headline font-bold text-on-surface text-sm"
+                  ><%=game.platform%></span
+                >
+              </div>
+              <div
+                class="flex justify-between items-end border-b border-outline-variant/10 pb-2"
+              >
+                <span
+                  class="font-label text-[10px] uppercase text-on-surface-variant"
+                  >Genero</span
+                >
+                <span class="font-headline font-bold text-on-surface text-sm"
+                  ><%=game.genre%></span
+                >
+              </div>
+              <div
+                class="flex justify-between items-end border-b border-outline-variant/10 pb-2"
+              >
+                <span
+                  class="font-label text-[10px] uppercase text-on-surface-variant"
+                  >Año</span
+                >
+                <span class="font-headline font-bold text-on-surface text-sm"
+                  ><%=game.release_year%></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Content Column -->
+        <div class="md:col-span-8 space-y-10">
+          <div class="space-y-6">
+            <h2
+              class="font-headline font-bold text-3xl tracking-tight text-on-surface"
+            >
+              Descripción del Juego
+            </h2>
+            <div
+              class="font-body text-on-surface-variant leading-relaxed text-base space-y-4"
+            >
+              <p><%=game.description%></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title%></title>
+    <link rel="stylesheet" href="/styles/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <%- include('../partials/header') %>
+
+    <main
+      class="flex-grow flex flex-col items-center justify-center px-6 py-12 md:py-20 bg-surface"
+    >
+      <div
+        class="w-full max-w-4xl grid pt-10 grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+      >
+        <!-- Contextual Branding Side -->
+        <div class="lg:col-span-4 space-y-6">
+          <div class="border-l-2 border-primary pl-6 py-2">
+            <h2
+              class="font-headline font-bold text-3xl text-on-surface tracking-tight"
+            >
+              <%= title%>
+            </h2>
+          </div>
+          <div class="bg-surface-container-low p-6 space-y-4">
+            <p
+              class="text-on-surface-variant body-md leading-relaxed opacity-80"
+            >
+              Vista destinada a la creación de nuevos juegos, donde el usuario
+              puede ingresar información básica como nombre, descripción, etc.
+              Permite definir los parámetros principales del juego de forma
+              rápida y organizada antes de su publicación.
+            </p>
+          </div>
+        </div>
+        <!-- Form Content -->
+        <div class="lg:col-span-8 bg-surface-container-low p-1 rounded-none">
+          <div class="bg-surface p-8 md:p-12">
+            <form class="space-y-8" method="POST">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <!-- Game Name -->
+                <div class="col-span-2">
+                  <label
+                    class="block font-label text-[10px] uppercase tracking-widest text-outline mb-3"
+                    >Nombre</label
+                  >
+                  <input
+                    name="name"
+                    value="<%= game ? game.name : '' %>"
+                    class="w-full bg-surface-container-highest border-none rounded-none focus:ring-1 focus:ring-primary text-on-surface placeholder:text-outline/40 py-4 px-4 font-body transition-colors"
+                    placeholder="Nombre del juego"
+                    type="text"
+                    required
+                  />
+                </div>
+                <!-- Description -->
+                <div class="col-span-2">
+                  <label
+                    class="block font-label text-[10px] uppercase tracking-widest text-outline mb-3"
+                    >Descripción</label
+                  >
+                  <textarea
+                    name="description"
+                    class="w-full bg-surface-container-highest border-none rounded-none focus:ring-1 focus:ring-primary text-on-surface placeholder:text-outline/40 py-4 px-4 font-body transition-colors resize-none"
+                    placeholder="Descripción del juego"
+                    rows="3"
+                    required
+                  >
+<%= game ? game.description : '' %></textarea
+                  >
+                </div>
+                <!-- Platform -->
+                <div>
+                  <label
+                    class="block font-label text-[10px] uppercase tracking-widest text-outline mb-3"
+                    >Plataforma</label
+                  >
+                  <input
+                    class="w-full bg-surface-container-highest border-none rounded-none focus:ring-1 focus:ring-primary text-on-surface placeholder:text-outline/40 py-4 px-4 font-body transition-colors"
+                    name="platform"
+                    value="<%= game ? game.platform : '' %>"
+                    placeholder="Plataforma del juego"
+                    required
+                  />
+                </div>
+                <!-- Genre -->
+                <div>
+                  <label
+                    class="block font-label text-[10px] uppercase tracking-widest text-outline mb-3"
+                    >Género</label
+                  >
+                  <select
+                    name="genre_id"
+                    class="w-full bg-surface-container-highest border-none rounded-none focus:ring-1 focus:ring-primary text-on-surface py-4 px-4 font-body transition-colors appearance-none"
+                  >
+                    <% genres.forEach(genre => { %>
+                    <option value="<%= genre.id %>"><%= genre.name %></option>
+                    <% }) %>
+                  </select>
+                </div>
+                <!-- Release Year -->
+                <div>
+                  <label
+                    class="block font-label text-[10px] uppercase tracking-widest text-outline mb-3"
+                    >Año</label
+                  >
+                  <input
+                    required
+                    class="w-full bg-surface-container-highest border-none rounded-none focus:ring-1 focus:ring-primary text-on-surface placeholder:text-outline/40 py-4 px-4 font-body transition-colors"
+                    placeholder="2024"
+                    type="number"
+                    name="release_year"
+                    value="<%= game ? game.release_year : '' %>"
+                  />
+                </div>
+                <!-- Image URL -->
+                <div>
+                  <label
+                    class="block font-label text-[10px] uppercase tracking-widest text-outline mb-3"
+                    >Portada del juego</label
+                  >
+                  <div class="flex">
+                    <span
+                      class="flex items-center px-4 bg-surface-container-high text-outline"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >link</span
+                      >
+                    </span>
+                    <input
+                      name="image_url"
+                      class="w-full bg-surface-container-highest border-none rounded-none focus:ring-1 focus:ring-primary text-on-surface placeholder:text-outline/40 py-4 px-4 font-body transition-colors"
+                      placeholder="https://assets.io/img.jpg"
+                      type="url"
+                      value="<%= game ? game.image_url : '' %>"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- Submit Section -->
+              <div
+                class="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-outline-variant/10"
+              >
+                <button
+                  class="primary-gradient text-on-primary-fixed font-label font-bold uppercase tracking-widest text-[10px] px-8 py-4 rounded-sm flex items-center gap-3 active:scale-95 duration-150 ease-in-out"
+                  type="submit"
+                >
+                  Guardar
+                </button>
+                <a
+                  href="/games"
+                  class="bg-transparent border border-outline-variant/30 text-on-surface px-8 py-4 font-label font-bold uppercase tracking-widest text-[10px] rounded-sm hover:bg-surface-container-highest transition-all w-full md:w-auto"
+                >
+                  Cancel
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%-include('../partials/footer') %>
+  </body>
+</html>
