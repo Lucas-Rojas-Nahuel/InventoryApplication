@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i ./src/input.css -o ./public/styles.css",
+   "build:css": "tailwindcss -i ./public/styles/input.css -o ./public/styles.css",
     "build": "npm run build:css",
     "start": "node app.js"
   },
