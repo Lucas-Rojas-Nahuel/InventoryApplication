@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./src/input.css -o ./public/styles.css",
+    "build": "npm run build:css",
     "start": "node app.js"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "express-validation": "^4.1.1",
